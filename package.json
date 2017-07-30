@@ -1,0 +1,29 @@
+{
+  "name": "webpack-plugins",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "deref": "^0.7.0",
+    "guava-cache": "^0.7.1",
+    "handlebars": "^4.0.10",
+    "json-schema-deref": "^0.3.5",
+    "json-schema-ref-parser": "^3.1.2",
+    "json-schema-to-typescript": "^4.5.2",
+    "json-schema-visitor": "^0.1.1",
+    "json-stringify-safe": "^5.0.1",
+    "lodash": "^4.17.4",
+    "pluralize": "^6.0.0",
+    "webpack-merge": "^4.1.0"
+  },
+  "devDependencies": {
+    "extract-text-webpack-plugin": "^3.0.0",
+    "mocha": "^3.4.2",
+    "webpack": "^3.4.1"
+  }
+}

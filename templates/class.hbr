@@ -1,0 +1,7 @@
+//{{description}}
+class {{className}} extends BaseItem {
+  constructor(args) {
+    super("{{name}}", "{{path}}", args);
+  }
+}
+

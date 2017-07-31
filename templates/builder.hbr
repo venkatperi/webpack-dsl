@@ -2,7 +2,7 @@ class {{classCase name}}Builder extends FactoryBuilderSupport {
   constructor(parent) {
     super(parent);
     {{#each members}}
-    this.registerFactory('{{name}}', new {{classCase factory}}Factory());
+    this.registerFactory('{{name}}', {{classCase factory}}Factory.INSTANCE); 
     {{/each}}
   }
 }

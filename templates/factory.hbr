@@ -1,13 +1,15 @@
 class {{classCase factory}}Factory extends BaseFactory {
+
   newInstance(builder, name, args) {
-    return new {{classCase name}}({type: name}, args);
+    return new {{classCase name}}NodeExt({name: name}, args);
   }
   {{#if isLeaf}}
   isLeaf() { return true; }
   {{/if}}
-
   {{#if members}}
   getBuilder(parent) { return new {{classCase name}}Builder(parent); }
   {{/if}}
 }
+
+{{classCase factory}}Factory.INSTANCE = new {{classCase factory}}Factory();
 

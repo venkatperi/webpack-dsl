@@ -2,11 +2,12 @@ const webpack = require( 'webpack' )
 const path = require( 'path' )
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' )
 
-entry( { vendor: [ 'jquery', 'lodash' ] } )
+require( './vendor' )
+
 entry( { app: './app.js' } )
 entry( { index: './index.html' } )
 
-context( __dirname + '/abc' )
+context( __dirname )
 
 output( {
   path: path.resolve( __dirname, 'dist' ),
@@ -17,20 +18,6 @@ node( {
   module: 'empty',
   net: 'empty',
   fs: 'empty'
-} )
-
-resolve( () => {
-  alias( { jquery: 'jquery/src/jquery' } )
-} )
-
-plugin( webpack.ProvidePlugin, {
-  $: 'jquery',
-  jQuery: 'jquery'
-} )
-
-plugin( webpack.optimize.CommonsChunkPlugin, {
-  name: 'vendor',
-  minChunks: Infinity
 } )
 
 plugin( webpack.DefinePlugin, {
@@ -61,4 +48,3 @@ module$( () => {
   } )
 
 } )
-

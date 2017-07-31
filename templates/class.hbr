@@ -1,6 +1,4 @@
-class {{classCase name}} extends BaseItem {
-  constructor(opts, args) {
-    super(opts, args);
-  }
+//{{{fullPath}}}
+class {{classCase name}}Node extends ConfigNode {
 }
 

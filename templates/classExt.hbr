@@ -1,0 +1,9 @@
+//{{{fullPath}}}
+class {{classCase name}}NodeExt extends classes.{{classCase name}}Node {
+  constructor(opts, args){
+    super(opts, args);
+    {{#if path}}
+    this._path = '{{{path}}}';
+    {{/if}}
+  }
+}

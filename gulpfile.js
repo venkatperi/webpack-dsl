@@ -16,7 +16,7 @@ gulp.task( 'gen', () => {
     mkdirp( GENDIR ),
     () => schema.generateSources(),
     ( code ) => writeFile( `${GENDIR}/webpack_builder.js`, code )
-  ] )
+  ] ).catch(console.log)
 } )
 
 gulp.task( 'clean', () => {

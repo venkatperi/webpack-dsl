@@ -22,8 +22,13 @@
     "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
+    "arrayp": "^1.1.0",
     "extract-text-webpack-plugin": "^3.0.0",
+    "gulp": "^3.9.1",
+    "mkdirp": "^0.5.1",
     "mocha": "^3.4.2",
+    "rimraf": "^2.6.1",
+    "vinyl-source-stream": "^1.1.0",
     "webpack": "^3.4.1"
   }
 }

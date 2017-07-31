@@ -1,0 +1,9 @@
+
+class RootBuilder extends FactoryBuilderSupport {
+  constructor(parent) {
+    super(parent);
+    this.registerFactory('webpackConfig', new WebpackFactory());
+  }
+}
+
+module.exports = RootBuilder;

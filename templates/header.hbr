@@ -1,0 +1,12 @@
+const BaseItem = require('../lib/base_item');
+const {FactoryBuilderSupport, AbstractFactory} = require('node-factory-builder');
+const BaseFactory = require('../lib/base_factory');
+
+class LeafFactory extends AbstractFactory {
+  newInstance(builder, name, args) {
+    return new Webpack({type: name}, args);
+  }
+
+  isLeaf() { return true; }
+}
+

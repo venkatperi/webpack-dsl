@@ -476,7 +476,7 @@
         "extensions": {
           "$ref": "#/definitions/common.arrayOfStringValues"
         },
-        "fileSystem": {},
+        "fileSystem": { "type": "string" },
         "mainFields": {
           "$ref": "#/definitions/common.arrayOfStringOrStringArrayValues"
         },
@@ -492,7 +492,7 @@
         "plugins": {
           "type": "array"
         },
-        "resolver": {},
+        "resolver": { "type": "string" },
         "symlinks": {
           "type": "boolean"
         },
@@ -725,7 +725,8 @@
   },
   "properties": {
     "amd": {
-      "description": "Set the value of `require.amd` and `define.amd`."
+      "description": "Set the value of `require.amd` and `define.amd`.",
+      "type": "string"
     },
     "bail": {
       "description": "Report the first error as a hard error instead of tolerating it.",

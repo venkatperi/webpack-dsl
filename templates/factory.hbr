@@ -1,27 +1,13 @@
-// factory for {{name}} tag
-class {{className}}Factory extends AbstractFactory {
+class {{classCase factory}}Factory extends BaseFactory {
   newInstance(builder, name, args) {
-    return new {{className}}(args);
+    return new {{classCase name}}({type: name}, args);
   }
-  {{#if isObject}}
-  getBuilder(parent) {
-    return new {{className}}Builder(parent);
-  }
-  {{else}}
-  isLeaf() {
-    return true;
-  }
+  {{#if isLeaf}}
+  isLeaf() { return true; }
+  {{/if}}
+
+  {{#if members}}
+  getBuilder(parent) { return new {{classCase name}}Builder(parent); }
   {{/if}}
 }
 
-{{#if isObject}}
-// builder for {{name}}
-class {{className}}Builder extends FactoryBuilderSupport {
-  constructor(parent) {
-    super(parent);
-    {{#each members}}
-    this.registerFactory('{{this}}', new {{capitalize this}}Factory());
-    {{/each}}
-  }
-}
-{{/if}}

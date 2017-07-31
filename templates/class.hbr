@@ -1,7 +1,6 @@
-//{{description}}
-class {{className}} extends BaseItem {
-  constructor(args) {
-    super("{{name}}", "{{path}}", args);
+class {{classCase name}} extends BaseItem {
+  constructor(opts, args) {
+    super(opts, args);
   }
 }
 

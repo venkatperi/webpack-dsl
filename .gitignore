@@ -8,3 +8,5 @@ dist/
 .coveralls.yml
 coverage/
 *.lock
+tmp/
+gen/

@@ -1,9 +1,8 @@
-// builder for {{name}}
-class {{className}}Builder extends FactoryBuilderSupport {
+class {{classCase name}}Builder extends FactoryBuilderSupport {
   constructor(parent) {
     super(parent);
     {{#each members}}
-    this.registerFactory('{{this}}, new {{capitalize this}}Factory());
+    this.registerFactory('{{name}}', new {{classCase factory}}Factory());
     {{/each}}
   }
 }

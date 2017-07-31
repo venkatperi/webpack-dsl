@@ -1,8 +1,13 @@
 'use "strict'
 
 const util = require( 'util' );
-const WebpackBuilder = require( '../lib/factories' );
+const WebpackBuilder = require( '../gen/webpack_builder' );
 
-let base = new WebpackBuilder().buildFile( __dirname + '/fixtures/base', {} );
-let x = new WebpackBuilder().buildFile( __dirname + '/fixtures/config1', base.config );
-console.log( util.inspect( x.config, { depth: 5 } ) );
+let file = __dirname + '/fixtures/config1';
+let builder = new WebpackBuilder()
+
+let config = builder.build( () =>
+  webpackConfig( () => require( file ) )
+);
+
+console.log( config.toAsciiTree() );

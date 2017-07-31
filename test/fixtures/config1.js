@@ -1,41 +1,34 @@
 const webpack = require( 'webpack' )
 const path = require( 'path' )
 
-const base = require( './base' )
+entry( { app: './app.js' } )
+entry( { index: './index.html' } )
 
-module.exports = ( base ) => {
-  return webpackConfig( base, () => {
+context( __dirname + '/abc' )
 
-    entry( { app: './app.js' } )
-    entry( { index: './index.html' } )
+output( {
+  path: path.resolve( __dirname, 'dist' ),
+  filename: 'assets/[name].bundle.js',
+} )
 
-    context( __dirname + '/abc' )
+plugin( webpack.DefinePlugin, {
+  TEST: JSON.stringify( 'test' )
+} )
 
-    output( {
-      path: path.resolve( __dirname, 'dist' ),
-      filename: 'assets/[name].bundle.js',
-    } )
+plugin( "extract-text-webpack-plugin", "assets/styles.css" )
 
-    plugin( webpack.DefinePlugin, {
-      TEST: JSON.stringify( 'test' )
-    } )
+module$( () => {
+  noParse( /abc/ )
 
-    plugin( "extract-text-webpack-plugin", "assets/styles.css" )
+  rule( () => {
+    test( /\.html$/ )
+    include( /\.html$/ )
+    include( /\.xml$/ )
+  } );
 
-    module$( () => {
-      noParse( /abc/ )
-
-      rule( () => {
-        test( /\.html$/ )
-        include( /\.html$/ )
-        include( /\.xml$/ )
-      } );
-
-      rule( () => {
-        test( /\.css$/ )
-        include( /\.scss$/ )
-      } )
-
-    } )
+  rule( () => {
+    test( /\.css$/ )
+    include( /\.scss$/ )
   } )
-}
+
+} )

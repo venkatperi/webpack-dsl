@@ -1,0 +1,78 @@
+const _ = require( 'lodash' );
+const ConfigNode = require( "./config_node" );
+const { type, scalar, extend } = require( './util' );
+
+function nop( x ) { return x; }
+
+//ruleSet-rule
+class RuleNode extends ConfigNode {
+  test( x ) {
+    this.value.test = x;
+  }
+  use( x ) {
+    this.value.use = x;
+  }
+}
+
+//webpack.module
+class ModuleNode extends ConfigNode {
+
+  rule( x ) {
+    this.value.rules = this.value.rules || [];
+    this.value.rules.push( x );
+  }
+
+  noParse( np ) {
+    this.value.noParse = np;
+  }
+}
+
+//webpack.plugins
+class PluginNode extends ConfigNode {
+
+  evaluate() {
+    let args = this.args;
+    let id = args.shift();
+    let plugin = id;
+    args = scalar( args );
+
+    switch ( type( id ) ) {
+      case 'string':
+        let klass = require( id );
+        plugin = new klass( args );
+        break;
+
+      case 'function':
+        plugin = new id( args );
+        break;
+    }
+
+    return super.evaluate( plugin );
+  }
+}
+
+//webpack
+class WebpackNode extends ConfigNode {
+
+  plugin( p ) {
+    this.value.plugins = this.value.plugins || [];
+    this.value.plugins.push( p );
+  }
+
+  module$( m ) {
+    this.value.module = _.extend( {}, this.value.module, m );
+  }
+
+  entry( e ) {
+    extend( this.value, e, 'entry' );
+  }
+
+  node( e ) {
+    extend( this.value, e, 'node' );
+  }
+
+  output( e ) {
+    extend( this.value, e, 'output' );
+  }
+
+}

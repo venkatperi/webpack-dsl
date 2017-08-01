@@ -1,4 +1,12 @@
 //{{{fullPath}}}
+{{#if members}}
 class {{classCase name}}Node extends ConfigNode {
+  {{#each members}}
+  {{name}}(value) { }
+
+  {{/each}}
 }
+{{else}}
+{{classCase name}}Node : class extends ConfigNode {},
+{{/if}}
 

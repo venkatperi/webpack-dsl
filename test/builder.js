@@ -9,14 +9,13 @@ let config = compileFile( file );
 
 console.log( config.toAsciiTree() );
 
-let cfg = {};
-config.walk( {
+let cfg = config.walk( {
   afterChildren( n ) {
-    n.evaluate( cfg );
-  }
+    return n.evaluate();
+  },
 } );
 
-console.log( cfg );
+console.log( util.inspect( cfg, { depth: 5 } ) );
 return;
 
 function getType( obj ) {

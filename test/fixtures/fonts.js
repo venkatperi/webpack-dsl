@@ -1,5 +1,6 @@
+const path = require('path')
 
-module( () => {
+module$( () => {
   rule( () => {
     test( /\.js$/ )
     use( 'babel-loader' )

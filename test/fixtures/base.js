@@ -4,11 +4,7 @@ const path = require( 'path' )
 context( projectDir )
 stats( 'errors-only' )
 cache( true )
-
-resolve( {
-  extensions: [ '*', '.js', '.jsx' ]
-} )
-
+resolve( { extensions: [ '*', '.js', '.jsx' ] } )
 entry( { main: path.join( srcDirs.js, 'index.js' ) } )
 
 output( {
@@ -18,6 +14,7 @@ output( {
   publicPath: publicPath,
 } )
 
+require( './devtool' )
 require( './js' )
 require( './fonts' )
 require( './stats' )

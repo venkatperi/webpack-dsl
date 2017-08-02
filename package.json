@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "deepmerge": "^1.5.0",
     "deref": "^0.7.0",
     "guava-cache": "^0.7.1",
     "handlebars": "^4.0.10",
@@ -19,7 +20,9 @@
     "json-stringify-safe": "^5.0.1",
     "lodash": "^4.17.4",
     "pluralize": "^6.0.0",
-    "webpack-merge": "^4.1.0"
+    "webpack-config": "^7.1.0",
+    "webpack-merge": "^4.1.0",
+    "yargs": "^8.0.2"
   },
   "devDependencies": {
     "arrayp": "^1.1.0",

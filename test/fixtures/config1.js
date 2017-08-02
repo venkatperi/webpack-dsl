@@ -1,8 +1,8 @@
 const webpack = require( 'webpack' )
 const path = require( 'path' )
-const ExtractTextPlugin = require( 'extract-text-webpack-plugin' )
 
 require( './vendor' )
+require( './css' )
 
 entry( { app: './app.js' } )
 entry( { index: './index.html' } )
@@ -20,11 +20,11 @@ node( {
   fs: 'empty'
 } )
 
-plugin( webpack.DefinePlugin, {
-  TEST: JSON.stringify( 'test' )
-} )
-
-plugin( "extract-text-webpack-plugin", "assets/styles.css" )
+development( () =>
+  plugin( webpack.DefinePlugin, {
+    TEST: JSON.stringify( 'test' )
+  } )
+)
 
 module$( () => {
   noParse( /abc/ )
@@ -32,14 +32,10 @@ module$( () => {
   rule( () => {
     test( /\.html$/ )
     use( 'file-loader?name=[path][name].[ext]' )
-  } )
-
-  rule( () => {
-    test( /\.css$/ )
-    use( ExtractTextPlugin.extract( {
-      fallback: 'style-loader',
-      use: 'css-loader'
-    } ) )
+    include( [
+      path.resolve( __dirname, "app/styles" ),
+      path.resolve( __dirname, "vendor/styles" )
+    ] )
   } )
 
   rule( () => {

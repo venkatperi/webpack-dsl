@@ -1,4 +1,5 @@
 sites/
+build/
 *.swp
 logs/
 *.log
